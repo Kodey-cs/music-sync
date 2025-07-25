@@ -1,18 +1,14 @@
 {
-  "name": "music-sync",
+  "name": "music-sync-setup",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
+  "start": "node server.js"
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "express": "^5.1.0",
-    "socket.io": "^4.8.1"
-  }
+  "type": "commonjs"
 }
