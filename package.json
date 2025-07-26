@@ -1,8 +1,8 @@
 {
-  "name": "music-sync-setup",
+  "name": "music-sync",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Music Sync Website",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
@@ -12,6 +12,6 @@
   "type": "commonjs",
   "dependencies": {
     "express": "^5.1.0",
-    "socket.io": "^4.8.1"
+    "socket.io": "^4.7.5"
   }
 }

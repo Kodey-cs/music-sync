@@ -1,0 +1,33 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+#playlist {
+  margin: 20px auto;
+  max-width: 300px;
+}
+
+#playlist button {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
+}
+
+#progressContainer {
+  width: 80%;
+  margin: 20px auto;
+  background: #ddd;
+  height: 10px;
+  border-radius: 5px;
+}
+
+#progressBar {
+  background: #4caf50;
+  width: 0;
+  height: 10px;
+  border-radius: 5px;
+}

@@ -2,14 +2,8 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Music Sync Playlist</title>
-  <style>
-    body { font-family: Arial; text-align: center; background: #f5f5f5; padding: 20px; }
-    #playlist { margin: 20px auto; max-width: 300px; }
-    #playlist button { display: block; width: 100%; margin: 5px 0; padding: 10px; }
-    #progressContainer { width: 80%; margin: 20px auto; background: #ddd; height: 10px; border-radius: 5px; }
-    #progressBar { background: #4caf50; width: 0; height: 10px; border-radius: 5px; }
-  </style>
+  <title>Music Sync Website</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Music Sync Website</h1>
@@ -18,29 +12,12 @@
   <br>
   <button id="playBtn">Play</button>
   <button id="pauseBtn">Pause</button>
-  <div id="progressContainer"><div id="progressBar"></div></div>
+  <div id="progressContainer">
+    <div id="progressBar"></div>
+  </div>
   <p id="timeDisplay">0:00 / 0:00</p>
+
   <script src="/socket.io/socket.io.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Music Sync (Simple)</title>
-</head>
-<body>
-  <h1>Music Sync Website</h1>
-
-  Hardcoded player like before -->
-  <!-- <audio id="player" controls>
-    <source src="songs/song1.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="script.js"></script>
-</body>
-</html> -->
