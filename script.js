@@ -58,29 +58,65 @@
 // pauseBtn.onclick = () => socket.emit("pause");
 // socket.emit("requestSync");
 
+// const socket = io();
+// const audio = document.getElementById("player");
+
+// // When the local user plays/pauses, notify the server
+// audio.addEventListener("play", () => {
+//   socket.emit("play", audio.currentTime);
+// });
+// audio.addEventListener("pause", () => {
+//   socket.emit("pause", audio.currentTime);
+// });
+// audio.addEventListener("seeked", () => {
+//   socket.emit("seek", audio.currentTime);
+// });
+
+// // When receiving events from other users
+// socket.on("play", (time) => {
+//   audio.currentTime = time;
+//   audio.play();
+// });
+// socket.on("pause", (time) => {
+//   audio.currentTime = time;
+//   audio.pause();
+// });
+// socket.on("seek", (time) => {
+//   audio.currentTime = time;
+// });
+
+
+
+
 const socket = io();
 const audio = document.getElementById("player");
 
-// When the local user plays/pauses, notify the server
+// Broadcast when user plays, pauses, or seeks
 audio.addEventListener("play", () => {
   socket.emit("play", audio.currentTime);
 });
+
 audio.addEventListener("pause", () => {
   socket.emit("pause", audio.currentTime);
 });
+
 audio.addEventListener("seeked", () => {
   socket.emit("seek", audio.currentTime);
 });
 
-// When receiving events from other users
+// When other users trigger actions
 socket.on("play", (time) => {
   audio.currentTime = time;
   audio.play();
 });
+
 socket.on("pause", (time) => {
   audio.currentTime = time;
   audio.pause();
 });
+
 socket.on("seek", (time) => {
   audio.currentTime = time;
 });
+
+

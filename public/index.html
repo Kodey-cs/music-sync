@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -20,6 +20,26 @@
   <button id="pauseBtn">Pause</button>
   <div id="progressContainer"><div id="progressBar"></div></div>
   <p id="timeDisplay">0:00 / 0:00</p>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Music Sync (Simple)</title>
+</head>
+<body>
+  <h1>Music Sync Website</h1>
+
+  <!-- Hardcoded player like before -->
+  <audio id="player" controls>
+    <source src="songs/song1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
   <script src="/socket.io/socket.io.js"></script>
   <script src="script.js"></script>
 </body>
