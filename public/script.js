@@ -6,6 +6,8 @@ const pauseBtn = document.getElementById("pauseBtn");
 const progressBar = document.getElementById("progressBar");
 const timeDisplay = document.getElementById("timeDisplay");
 
+let currentSong = "";
+
 // Load playlist dynamically
 fetch("/songs")
   .then(res => res.json())
@@ -17,30 +19,36 @@ fetch("/songs")
 
     files.forEach((file, index) => {
       const btn = document.createElement("button");
-      btn.innerText = file.replace(/\.(mp3|amr)$/i, ""); // Show name without extension
+      btn.innerText = file.replace(/\.(mp3|amr)$/i, "");
       btn.addEventListener("click", () => {
-        const safeURL = `songs/${encodeURIComponent(file)}`;
-        audio.src = safeURL;
-        audio.play();
-        socket.emit("play", audio.currentTime);
+        playSong(file, 0);
+        socket.emit("changeSong", { file, time: 0 });
       });
       playlistDiv.appendChild(btn);
 
-      if (index === 0) {
+      if (index === 0 && !currentSong) {
+        currentSong = file;
         audio.src = `songs/${encodeURIComponent(file)}`;
       }
     });
   });
 
-// Play/Pause buttons
+function playSong(file, time = 0) {
+  currentSong = file;
+  audio.src = `songs/${encodeURIComponent(file)}`;
+  audio.currentTime = time;
+  audio.play();
+}
+
+// Play/Pause
 playBtn.addEventListener("click", () => {
   audio.play();
-  socket.emit("play", audio.currentTime);
+  socket.emit("play", { time: audio.currentTime, song: currentSong });
 });
 
 pauseBtn.addEventListener("click", () => {
   audio.pause();
-  socket.emit("pause", audio.currentTime);
+  socket.emit("pause", { time: audio.currentTime, song: currentSong });
 });
 
 // Progress bar
@@ -52,15 +60,30 @@ audio.addEventListener("timeupdate", () => {
   timeDisplay.innerText = `${format(audio.currentTime)} / ${format(audio.duration || 0)}`;
 });
 
-// Sync events
-socket.on("play", (time) => {
-  audio.currentTime = time;
-  audio.play();
+// Socket listeners for sync
+socket.on("play", ({ time, song }) => {
+  if (song && song !== currentSong) {
+    playSong(song, time);
+  } else {
+    audio.currentTime = time;
+    audio.play();
+  }
 });
-socket.on("pause", (time) => {
-  audio.currentTime = time;
-  audio.pause();
+
+socket.on("pause", ({ time, song }) => {
+  if (song && song !== currentSong) {
+    playSong(song, time);
+    audio.pause();
+  } else {
+    audio.currentTime = time;
+    audio.pause();
+  }
 });
+
 socket.on("seek", (time) => {
   audio.currentTime = time;
+});
+
+socket.on("changeSong", ({ file, time }) => {
+  playSong(file, time);
 });
