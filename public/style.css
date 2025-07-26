@@ -1,8 +1,8 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
-  background: linear-gradient(135deg, #1db954, #191414);
-  color: #fff;
+  background: linear-gradient(135deg, #1e723c, #ad3434);
+  color: #ce1515;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -27,7 +27,7 @@ h1 {
 }
 
 #playlist button {
-  background: #282828;
+  background: #1883ad;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -38,19 +38,19 @@ h1 {
 }
 
 #playlist button:hover {
-  background: #1db954;
+  background: #178eb3;
   transform: scale(1.03);
 }
 
 audio {
   width: 80%;
   margin: 15px auto;
-  background: #111;
+  background: #e9d0d0;
   border-radius: 10px;
 }
 
 #playBtn, #pauseBtn {
-  background: #1db954;
+  background: #ba75e7;
   color: #fff;
   border: none;
   border-radius: 25px;
@@ -62,7 +62,7 @@ audio {
 }
 
 #playBtn:hover, #pauseBtn:hover {
-  background: #1ed760;
+  background: #6354a7;
   transform: scale(1.1);
 }
 
